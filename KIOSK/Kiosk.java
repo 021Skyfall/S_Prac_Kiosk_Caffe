@@ -1,5 +1,6 @@
 package KIOSK;
 
+import Discount.BEDiscountCondition;
 import Discount.DiscountCondition;
 import Discount.StudentDiscountCondition;
 import Product.Product;
@@ -11,8 +12,9 @@ public class Kiosk {
     private ProductRepository productRepository = new ProductRepository();
     private StudentDiscountCondition studentDiscountCondition =new StudentDiscountCondition(500);
 //   private DiscountCondition discountCondition;
-
     Scanner scanner = new Scanner(System.in);
+    public Kiosk(BEDiscountCondition beDiscountCondition) {};
+
     public void operate() {
         extracted();
         // 메뉴 선택 -> 입력

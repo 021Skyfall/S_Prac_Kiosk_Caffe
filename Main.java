@@ -1,11 +1,12 @@
 
+import Discount.BEDiscountCondition;
 import Discount.DiscountCondition;
 import Discount.StudentDiscountCondition;
 import KIOSK.Kiosk;
 
 public class Main {
     public static void main(String[] args) {
-        Kiosk kiosk = new Kiosk();
+        Kiosk kiosk = new Kiosk(new BEDiscountCondition(10));
         kiosk.operate();
     }
 }
