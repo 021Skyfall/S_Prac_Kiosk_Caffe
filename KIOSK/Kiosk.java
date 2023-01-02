@@ -10,10 +10,16 @@ import java.util.Scanner;
 
 public class Kiosk {
     private ProductRepository productRepository = new ProductRepository();
-    private StudentDiscountCondition studentDiscountCondition =new StudentDiscountCondition(500);
+//    private StudentDiscountCondition studentDiscountCondition =new StudentDiscountCondition(500);
 //   private DiscountCondition discountCondition;
     Scanner scanner = new Scanner(System.in);
-    public Kiosk(BEDiscountCondition beDiscountCondition) {};
+//    private BEDiscountCondition beDiscountCondition = new BEDiscountCondition(20);
+    DiscountCondition discountCondition;
+
+    public Kiosk(DiscountCondition discountCondition) {
+        this.discountCondition = discountCondition;
+    } //     DiscountCondition을 받아오는 생성자를 만들어서 하위 클래스인 BED랑 Student를 불러옴
+
 
     public void operate() {
         extracted();
@@ -27,8 +33,8 @@ public class Kiosk {
         selectedProduct.applyOption();
         // 할인 여부 적용
         // 주문 내역 출력
-        int price = studentDiscountCondition.discount(selectedProduct.getPrice());
-//        int price = discountCondition.discount(selectedProduct.getPrice());
+//        int price = beDiscountCondition.discount(selectedProduct.getPrice());
+        int price = discountCondition.discount(selectedProduct.getPrice());
         System.out.println("주문이 완료되었습니다.");
         System.out.printf("주문 상품 : %s %s\n",
                 selectedProduct.getName(),selectedProduct.getOptionToString());
@@ -42,7 +48,7 @@ public class Kiosk {
         System.out.println("-".repeat(50));
         // 상품 목록 출력
         for(Product product : productRepository.getProducts()) {
-            System.out.printf("(%d) %-1Ss %d\n",
+            System.out.printf("(%d) %-1s %d\n",
                     product.getId(), product.getName(), product.getPrice());
         } // %-1Ss  스트링 왼쪽정렬
         System.out.println("-".repeat(50));

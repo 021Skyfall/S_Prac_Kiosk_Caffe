@@ -12,7 +12,7 @@ public class BEDiscountCondition implements DiscountCondition{
     private boolean checkDiscountCondition() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("학생이십니까? (1)_예 (2)_아니오");
+        System.out.println("학원 학생이십니까? (1)_예 (2)_아니오");
         String input = scanner.nextLine();
 
         if(input.equals("1")) return true;
